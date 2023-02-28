@@ -32,8 +32,9 @@ public class SpringMvcDispatcherServletInitializer extends AbstractAnnotationCon
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
-        registerHiddenFieldFilter(servletContext);
+        //ORDER IS IMPORTANT, CharacterEncodingFilter MUST BE THE FIRST
         registerCharacterEncodingFilter(servletContext);
+        registerHiddenFieldFilter(servletContext);
     }
 
     private void registerCharacterEncodingFilter(ServletContext servletContext) {

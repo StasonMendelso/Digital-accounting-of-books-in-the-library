@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header::head()"></head>
+<body>
+
+<form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
+    <label for="fullName">Введіть ПІБ:</label>
+    <input id="fullName" type="text" th:field="*{fullName}">
+    <br>
+    <label for="yearOfBirth">Введіть рік народження:</label>
+    <input id="yearOfBirth" type="number" th:field="*{yearOfBirth}">
+    <br>
+    <input type="submit" value="Оновити">
+</form>
+
+</body>
+</html>
