@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.stanislav.dao.PersonDao;
@@ -29,6 +31,13 @@ public class PeopleController {
         return "people/people";
     }
 
+    @GetMapping("{id}")
+    public String showPerson(@PathVariable("id") int id,
+                             Model model) {
+        model.addAttribute("person", personDao.read(id));
+        return "people/person";
+    }
+
     @GetMapping("/new")
     public String newPerson(@ModelAttribute("person") Person person) {
         return "people/newPerson";
@@ -37,6 +46,20 @@ public class PeopleController {
     @PostMapping()
     public String addPerson(@ModelAttribute("person") Person person) {
         personDao.create(person);
+        return "redirect:/people";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String editPerson(@PathVariable("id") int id,
+                             Model model) {
+        model.addAttribute("person", personDao.read(id));
+        return "people/editPerson";
+    }
+
+    @PatchMapping("/{id}")
+    public String updatePerson(@PathVariable("id") int id,
+                               @ModelAttribute Person person) {
+        personDao.update(id, person);
         return "redirect:/people";
     }
 }

@@ -28,4 +28,18 @@ public class PersonDao {
                 person.getFullName(),
                 person.getYearOfBirth());
     }
+
+    public Person read(int id) {
+        return jdbcTemplate.query("SELECT * FROM Person WHERE id = ?", new Object[]{id}, new PersonMapper())
+                .stream()
+                .findAny()
+                .orElse(null);
+    }
+
+    public void update(int id, Person person) {
+        jdbcTemplate.update("UPDATE Person SET full_name=?, year_of_birth=? WHERE id=?",
+                person.getFullName(),
+                person.getYearOfBirth(),
+                id);
+    }
 }
