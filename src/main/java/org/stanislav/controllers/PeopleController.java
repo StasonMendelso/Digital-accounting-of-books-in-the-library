@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.stanislav.dao.BookDao;
 import org.stanislav.dao.PersonDao;
 import org.stanislav.models.Person;
 
@@ -20,10 +21,12 @@ import org.stanislav.models.Person;
 @RequestMapping(value = "/people", produces = "text/plain;charset=UTF-8")
 public class PeopleController {
     private final PersonDao personDao;
+    private final BookDao bookDao;
 
     @Autowired
-    public PeopleController(PersonDao personDao) {
+    public PeopleController(PersonDao personDao, BookDao bookDao) {
         this.personDao = personDao;
+        this.bookDao = bookDao;
     }
 
     @GetMapping()
@@ -36,6 +39,7 @@ public class PeopleController {
     public String showPerson(@PathVariable("id") int id,
                              Model model) {
         model.addAttribute("person", personDao.read(id));
+        model.addAttribute("takenBookList", bookDao.readByOwnerId(id));
         return "people/person";
     }
 

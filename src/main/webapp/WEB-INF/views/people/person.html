@@ -8,7 +8,17 @@
         Person full name
     </div>
 </div>
+<div th:if="${takenBookList.isEmpty()}">
+    Користувач не взяв ще жодної книги.
+</div>
 <hr>
+<div th:unless="${takenBookList.isEmpty()}">
+    <b>Книги:</b>
+    <div th:each="book : ${takenBookList}"
+         th:text="${book.getTitle()}+', '+${book.getAuthor()}+', '+${book.getYear()}">
+    </div>
+    <hr>
+</div>
 <div>
     <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
         <input type="submit" value="Редагувати">
