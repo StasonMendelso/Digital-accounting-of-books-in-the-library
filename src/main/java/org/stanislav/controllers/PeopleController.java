@@ -3,6 +3,7 @@ package org.stanislav.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -60,6 +61,12 @@ public class PeopleController {
     public String updatePerson(@PathVariable("id") int id,
                                @ModelAttribute Person person) {
         personDao.update(id, person);
+        return "redirect:/people";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deletePerson(@PathVariable("id") int id) {
+        personDao.delete(id);
         return "redirect:/people";
     }
 }
