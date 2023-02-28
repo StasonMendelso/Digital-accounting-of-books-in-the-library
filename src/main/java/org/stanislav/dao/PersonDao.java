@@ -22,4 +22,10 @@ public class PersonDao {
     public List<Person> readAllPersons() {
         return jdbcTemplate.query("SELECT * FROM Person", new PersonMapper());
     }
+
+    public void create(Person person) {
+        jdbcTemplate.update("INSERT INTO Person(full_name, year_of_birth) VALUES(?,?)",
+                person.getFullName(),
+                person.getYearOfBirth());
+    }
 }
