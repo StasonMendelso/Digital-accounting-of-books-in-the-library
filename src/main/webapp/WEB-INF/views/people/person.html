@@ -3,16 +3,16 @@
 <head th:replace="fragments/header::head()"></head>
 <body>
 <div>
-    <div th:text="${person.getFullName()}"
+    <div th:text="${person.getFullName()}+', '+${person.getYearOfBirth()}"
          th:href="@{/people/{id}(id=${person.getId()})}">
         Person full name
     </div>
-    <div th:text="${person.getYearOfBirth()}">
-        Person year of birth
-    </div>
 </div>
+<hr>
 <div>
-    <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Редагувати</a>
+    <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
+        <input type="submit" value="Редагувати">
+    </form>
 </div>
 <div>
     <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
