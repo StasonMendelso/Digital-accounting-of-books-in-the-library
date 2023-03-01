@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.stanislav.dao.BookDao;
+import org.stanislav.models.Book;
 
 /**
  * @author Stanislav Hlova
@@ -23,13 +26,25 @@ public class BooksController {
 
     @GetMapping()
     public String showBooks(Model model) {
-        model.addAttribute("bookList",bookDao.readAll());
+        model.addAttribute("bookList", bookDao.readAll());
         return "books/books";
     }
+
     @GetMapping("/{id}")
     public String showBook(@PathVariable("id") int id,
-                           Model model){
+                           Model model) {
         model.addAttribute("book", bookDao.read(id));
         return "books/book";
+    }
+
+    @GetMapping("/new")
+    public String newBook(@ModelAttribute("book") Book book) {
+        return "books/newBook";
+    }
+
+    @PostMapping()
+    public String addBook(@ModelAttribute("book") Book book) {
+        bookDao.create(book);
+        return "redirect:/books";
     }
 }

@@ -34,4 +34,11 @@ public class BookDao {
                 .findAny()
                 .orElse(null);
     }
+
+    public void create(Book book) {
+        jdbcTemplate.update("INSERT INTO Book(title, author, year) VALUES(?,?,?)",
+                book.getTitle(),
+                book.getAuthor(),
+                book.getYear());
+    }
 }
