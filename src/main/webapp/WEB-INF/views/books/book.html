@@ -7,7 +7,17 @@
     Book value
 </div>
 <br>
-
+<hr>
+<div>
+    <form th:method="GET" th:action="@{/books/{id}/edit(id=${book.getId()})}">
+        <input type="submit" value="Редагувати">
+    </form>
+</div>
+<div>
+    <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
+        <input type="submit" value="Видалити">
+    </form>
+</div>
 
 </body>
 </html>
