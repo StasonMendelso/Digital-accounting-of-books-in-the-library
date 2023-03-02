@@ -1,11 +1,13 @@
 package org.stanislav.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.stanislav.models.Person;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Stanislav Hlova
@@ -45,5 +47,11 @@ public class PersonDao {
 
     public void delete(int id) {
         jdbcTemplate.update("DELETE FROM Person WHERE id = ?", id);
+    }
+
+    public Optional<Person> readByFullName(String fullName) {
+        return jdbcTemplate.query("SELECT * FROM Person WHERE full_name = ?", new Object[]{fullName}, new BeanPropertyRowMapper<>(Person.class))
+                .stream()
+                .findAny();
     }
 }
