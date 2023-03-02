@@ -103,6 +103,39 @@ automatically, but check it before running. You can see
 official [guide](https://www.youtube.com/watch?v=ThBw3WBTw9Q&ab_channel=IntelliJIDEAbyJetBrains).
 After configuration, you can press run button of the server and go to browser to check the application work.
 
+## Examples of web-application's pages. Endpoints.
+
+If you want to open them in browser you need to enter one of the two URL:
+* "**localhost:{port}/{applicationContext}/people**" - to open a page with all peoples;
+* "**localhost:{port}/{applicationContext}/books**" - to open a page with all books,
+
+where  **{port}** - is a port, on which you server is running; **{applicationContext}** - is an application
+context name, which you give in your server configuration for this app.
+
+Here you can find the screenshots of the web-application:
+
+![People page](images/web-application-examples/Page with all people.png)
+
+![](images/web-application-examples/Page with person which didn't bring a book.png)
+
+![](images/web-application-examples/Page with a person which brought two books.png)
+
+![](images/web-application-examples/Page for adding a new person.png)
+
+![](images/web-application-examples/Page after sending empty form for adding a new person.png)
+
+![](images/web-application-examples/Page after adding a person with a name that already exists.png)
+
+![](images/web-application-examples/Page for updating person’s data.png)
+
+![](images/web-application-examples/Page with all books.png)
+
+![](images/web-application-examples/Page with a book which was taken.png)
+
+![](images/web-application-examples/Page with a book which wasn’t taken.png)
+
+You can find more photos [here](images/web-application-examples).
+
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management
