@@ -114,25 +114,25 @@ context name, which you give in your server configuration for this app.
 
 Here you can find the screenshots of the web-application:
 
-![People page](images/web-application-examples/Page with all people.png)
+![People page](images/web-application-examples/PageWithAllPeople.png)
 
-![](images/web-application-examples/Page with person which didn't bring a book.png)
+![](images/web-application-examples/PageWithPersonWhichDidntBringABook.png)
 
-![](images/web-application-examples/Page with a person which brought two books.png)
+![](images/web-application-examples/PageWithAPersonWhichBroughtTwoBooks.png)
 
-![](images/web-application-examples/Page for adding a new person.png)
+![](images/web-application-examples/PageForAddingANewPerson.png)
 
-![](images/web-application-examples/Page after sending empty form for adding a new person.png)
+![](images/web-application-examples/PageAfterSendingEmptyFormForAddingANewPerson.png)
 
-![](images/web-application-examples/Page after adding a person with a name that already exists.png)
+![](images/web-application-examples/PageAfterAddingAPersonWithANameThatAlreadyExists.png)
 
-![](images/web-application-examples/Page for updating person’s data.png)
+![](images/web-application-examples/PageForUpdatingPersonsData.png)
 
-![](images/web-application-examples/Page with all books.png)
+![](images/web-application-examples/PageWithAllBooks.png)
 
-![](images/web-application-examples/Page with a book which was taken.png)
+![](images/web-application-examples/PageWithABookWhichWasTaken.png)
 
-![](images/web-application-examples/Page with a book which wasn’t taken.png)
+![](images/web-application-examples/PageWithABookWhichWasntTaken.png)
 
 You can find more photos [here](images/web-application-examples).
 
